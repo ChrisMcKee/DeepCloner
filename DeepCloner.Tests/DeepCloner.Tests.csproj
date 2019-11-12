@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Force.DeepCloner.Tests</RootNamespace>
     <AssemblyName>DeepCloner.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -36,64 +36,6 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CloneBehave">
-      <HintPath>..\packages\Clone.Behave.1.0.1\lib\CloneBehave.dll</HintPath>
-    </Reference>
-    <Reference Include="DesertOctopus">
-      <HintPath>..\packages\DesertOctopus.0.1.1\lib\net452\DesertOctopus.dll</HintPath>
-    </Reference>
-    <Reference Include="CloneExtensions">
-      <HintPath>..\packages\CloneExtensions.1.2\lib\portable-net40+sl50+win+wp80\CloneExtensions.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="FastDeepCloner, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FastDeepCloner.1.0.9\lib\portable-net45+sl4+wp8+win8\FastDeepCloner.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Fasterflect">
-      <HintPath>..\packages\fasterflect.2.1.3\lib\net40\Fasterflect.dll</HintPath>
-    </Reference>
-    <Reference Include="GeorgeCloney">
-      <HintPath>..\packages\GeorgeCloney.1.1.1.17\lib\net40\GeorgeCloney.dll</HintPath>
-    </Reference>
-    <Reference Include="NClone, Version=1.1.0.0, Culture=neutral, PublicKeyToken=81c60607627cc572, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NClone.1.1.1\lib\net45\NClone.dll</HintPath>
-    </Reference>
-    <Reference Include="Nuclex.Cloning">
-      <HintPath>..\packages\Nuclex.Cloning.1.0.0.0\lib\net40\Nuclex.Cloning.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework, Version=3.6.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NUnit.3.6.0\lib\net45\nunit.framework.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceStack, Version=5.0.0.0, Culture=neutral, PublicKeyToken=02c12cbda47e6587, processorArchitecture=MSIL">
-      <HintPath>..\packages\ServiceStack.5.0.0\lib\net45\ServiceStack.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="ServiceStack.Client, Version=5.0.0.0, Culture=neutral, PublicKeyToken=02c12cbda47e6587, processorArchitecture=MSIL">
-      <HintPath>..\packages\ServiceStack.Client.5.0.0\lib\net45\ServiceStack.Client.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="ServiceStack.Common, Version=5.0.0.0, Culture=neutral, PublicKeyToken=02c12cbda47e6587, processorArchitecture=MSIL">
-      <HintPath>..\packages\ServiceStack.Common.5.0.0\lib\net45\ServiceStack.Common.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="ServiceStack.Interfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=02c12cbda47e6587, processorArchitecture=MSIL">
-      <HintPath>..\packages\ServiceStack.Interfaces.5.0.0\lib\net45\ServiceStack.Interfaces.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="ServiceStack.Text, Version=5.0.0.0, Culture=neutral, PublicKeyToken=02c12cbda47e6587, processorArchitecture=MSIL">
-      <HintPath>..\packages\ServiceStack.Text.5.0.0\lib\net45\ServiceStack.Text.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -127,13 +69,44 @@
     <Compile Include="SystemTypesSpec.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\DeepCloner\DeepCloner.Core.csproj">
+      <Project>{80433D5C-7DEF-4284-AE00-015AFAC4B4D3}</Project>
+      <Name>DeepCloner.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DeepCloner\DeepCloner.csproj">
-      <Project>{6BB0A0AB-67F9-45E4-B60C-4CEED098D463}</Project>
-      <Name>DeepCloner</Name>
-    </ProjectReference>
+    <PackageReference Include="Clone.Behave">
+      <Version>1.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="CloneExtensions">
+      <Version>1.2.0</Version>
+    </PackageReference>
+    <PackageReference Include="DesertOctopus">
+      <Version>0.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="EntityFramework">
+      <Version>6.1.3</Version>
+    </PackageReference>
+    <PackageReference Include="FastDeepCloner">
+      <Version>1.0.5</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="GeorgeCloney">
+      <Version>1.1.1.17</Version>
+    </PackageReference>
+    <PackageReference Include="NClone">
+      <Version>1.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="Nuclex.Cloning">
+      <Version>1.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="NUnit">
+      <Version>3.6.0</Version>
+    </PackageReference>
+    <PackageReference Include="ServiceStack">
+      <Version>5.0.0</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -18,7 +18,7 @@ namespace Force.DeepCloner.Helpers
 		public static object GetOrAddClass<T>(Type type, Func<Type, T> adder)
 		{
 			// return _typeCache.GetOrAdd(type, x => adder(x));
-			
+
 			// this implementation is slightly faster than getoradd
 			object value;
 			if (_typeCache.TryGetValue(type, out value)) return value;

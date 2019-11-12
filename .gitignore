@@ -7,3 +7,6 @@ packages
 .idea
 *.iml
 private.snk
+/.vs/
+/.vs/
+**/.vs/**

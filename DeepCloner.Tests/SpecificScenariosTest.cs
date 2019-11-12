@@ -44,43 +44,43 @@ namespace Force.DeepCloner.Tests
 			Assert.That(q.ToArray().Length, Is.EqualTo(5));
 		}
 
-		[Test(Description = "Tests works on local SQL Server with AdventureWorks database")]
-		public void Clone_EfQuery1()
-		{
-			var at = new AdventureContext();
-			// var at2 = at.DeepClone();
-			// Console.WriteLine(at.ChangeTracker);
-			// Console.WriteLine(at.ChangeTracker);
-			var q = at.Currencies.Where(x => x.CurrencyCode == "AUD");
-			var q2 = q.DeepClone();
-#if NETCORE
-			// Console.WriteLine(Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions
-			//	.GetRequiredService<Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IChangeTrackerFactory>(
-			//		((Microsoft.EntityFrameworkCore.Infrastructure.IInfrastructure<IServiceProvider>) at).Instance));
-			/* Console.WriteLine(((Microsoft.EntityFrameworkCore.Infrastructure.IInfrastructure<IServiceProvider>) at).Instance);
-			var serviceProvider = ((Microsoft.EntityFrameworkCore.Infrastructure.IInfrastructure<IServiceProvider>) at.DeepClone()).Instance;
-			Console.WriteLine(serviceProvider);
-			Console.WriteLine(serviceProvider.GetService(typeof(Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IChangeTrackerFactory)));
-			Console.WriteLine(Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions
-				.GetRequiredService<Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IChangeTrackerFactory>(
-					serviceProvider));*/
-#endif
-			// var q2 = q.DeepClone();
-			// Console.WriteLine(q2.);
-			// Assert.That(q.ToArray().Length, Is.EqualTo(1));
-			Assert.That(q2.ToArray().Length, Is.EqualTo(1));
-		}
+//		[Test(Description = "Tests works on local SQL Server with AdventureWorks database")]
+//		public void Clone_EfQuery1()
+//		{
+//			var at = new AdventureContext();
+//			// var at2 = at.DeepClone();
+//			// Console.WriteLine(at.ChangeTracker);
+//			// Console.WriteLine(at.ChangeTracker);
+//			var q = at.Currencies.Where(x => x.CurrencyCode == "AUD");
+//			var q2 = q.DeepClone();
+//#if NETCORE
+//			// Console.WriteLine(Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions
+//			//	.GetRequiredService<Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IChangeTrackerFactory>(
+//			//		((Microsoft.EntityFrameworkCore.Infrastructure.IInfrastructure<IServiceProvider>) at).Instance));
+//			/* Console.WriteLine(((Microsoft.EntityFrameworkCore.Infrastructure.IInfrastructure<IServiceProvider>) at).Instance);
+//			var serviceProvider = ((Microsoft.EntityFrameworkCore.Infrastructure.IInfrastructure<IServiceProvider>) at.DeepClone()).Instance;
+//			Console.WriteLine(serviceProvider);
+//			Console.WriteLine(serviceProvider.GetService(typeof(Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IChangeTrackerFactory)));
+//			Console.WriteLine(Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions
+//				.GetRequiredService<Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IChangeTrackerFactory>(
+//					serviceProvider));*/
+//#endif
+//			// var q2 = q.DeepClone();
+//			// Console.WriteLine(q2.);
+//			// Assert.That(q.ToArray().Length, Is.EqualTo(1));
+//			Assert.That(q2.ToArray().Length, Is.EqualTo(1));
+//		}
 
-		[Test(Description = "Tests works on local SQL Server with AdventureWorks database")]
-		public void Clone_EfQuery2()
-		{
-			var q = new AdventureContext().Currencies.OrderBy(x => x.Name);
-			var q2 = q.DeepClone();
-			var cnt = q.Count();
-			Assert.That(q2.Count(), Is.EqualTo(cnt));
-		}
+//		[Test(Description = "Tests works on local SQL Server with AdventureWorks database")]
+//		public void Clone_EfQuery2()
+//		{
+//			var q = new AdventureContext().Currencies.OrderBy(x => x.Name);
+//			var q2 = q.DeepClone();
+//			var cnt = q.Count();
+//			Assert.That(q2.Count(), Is.EqualTo(cnt));
+//		}
 
-		[Test]
+//		[Test]
 		public void Clone_ComObject1()
 		{
 #if !NETCORE
@@ -118,7 +118,7 @@ namespace Force.DeepCloner.Tests
 		public class LazyClass
 		{
 			public static int Counter;
-			
+
 			private readonly LazyRef<object> _lazyValue = new LazyRef<object>(() => (object)(++Counter).ToString(CultureInfo.InvariantCulture));
 
 			public string GetValue()
@@ -137,24 +137,24 @@ namespace Force.DeepCloner.Tests
 			public string Name { get; set; }
 		}
 
-		public class AdventureContext : DbContext
-		{
-			public AdventureContext()
-#if !NETCORE
-			: base("Server=.;Integrated Security=SSPI;Database=AdventureWorks")
-#endif
-			{
-			}
+//		public class AdventureContext : DbContext
+//		{
+//			public AdventureContext()
+//#if !NETCORE
+//			: base("Server=.;Integrated Security=SSPI;Database=AdventureWorks")
+//#endif
+//			{
+//			}
 
-			public DbSet<Currency> Currencies { get; set; }
+//			public DbSet<Currency> Currencies { get; set; }
 
-#if NETCORE
-			protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-			{
-				optionsBuilder.UseSqlServer(@"Server=.;Database=AdventureWorks;Trusted_Connection=true;MultipleActiveResultSets=true");
-			}
-#endif
-		}
+//#if NETCORE
+//			protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+//			{
+//				optionsBuilder.UseSqlServer(@"Server=.;Database=AdventureWorks;Trusted_Connection=true;MultipleActiveResultSets=true");
+//			}
+//#endif
+//		}
 
 		[Test]
 		public void GenericComparer_Clone()
@@ -234,7 +234,7 @@ namespace Force.DeepCloner.Tests
 					_initializer = null;
 				}
 			}
-			
+
 			public LazyRef(Func<T> initializer)
 			{
 				_initializer = initializer;

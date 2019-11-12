@@ -9,8 +9,6 @@ using CloneBehave;
 
 using CloneExtensions;
 
-using FastDeepCloner;
-
 using Force.DeepCloner.Tests.Imported;
 
 using NClone;
@@ -137,7 +135,7 @@ namespace Force.DeepCloner.Tests
 				var elapsed = sw.ElapsedMilliseconds;
 				minCount = Math.Min(minCount, elapsed);
 			}
-			
+
 			Console.WriteLine(name + ": " + (1000 * 1000 * minCount / count) + " ns");
 			GC.Collect(2, GCCollectionMode.Forced, true, true);
 		}
@@ -159,7 +157,7 @@ namespace Force.DeepCloner.Tests
 			DoTest(CountWarm, "NClone", () => Clone.ObjectGraph(c1));
 			DoTest(CountWarm, "Clone.Behave", () => new CloneEngine().Clone(c1));
 			DoTest(CountWarm, "GeorgeCloney", () => GeorgeCloney.CloneExtension.DeepCloneWithoutSerialization(c1));
-			DoTest(CountWarm, "FastDeepCloner", () => FastDeepCloner.DeepCloner.Clone(c1, FieldType.FieldInfo));
+			//DoTest(CountWarm, "FastDeepCloner", () => FastDeepCloner.DeepCloner.Clone(c1, FieldType.FieldInfo));
 			DoTest(CountWarm, "DesertOctopus", () => DesertOctopus.ObjectCloner.Clone(c1));
 			DoTest(CountWarm, "Binary Formatter", () => CloneViaFormatter(c1));
 
@@ -173,7 +171,7 @@ namespace Force.DeepCloner.Tests
 			DoTest(CountReal, "NClone", () => Clone.ObjectGraph(c1));
 			DoTest(CountReal, "Clone.Behave", () => new CloneEngine().Clone(c1));
 			DoTest(CountReal, "GeorgeCloney", () => GeorgeCloney.CloneExtension.DeepCloneWithoutSerialization(c1));
-			DoTest(CountReal, "FastDeepCloner", () => FastDeepCloner.DeepCloner.Clone(c1, FieldType.FieldInfo));
+			//DoTest(CountReal, "FastDeepCloner", () => FastDeepCloner.DeepCloner.Clone(c1, FieldType.FieldInfo));
 			DoTest(CountReal, "DesertOctopus", () => DesertOctopus.ObjectCloner.Clone(c1));
 			// binary is slow, reduce
 			DoTest(CountReal / 10, "Binary Formatter", () => CloneViaFormatter(c1));
@@ -304,7 +302,7 @@ namespace Force.DeepCloner.Tests
 			BaseTest.SwitchTo(false);
 
 			var c1 = new TreeNode();
-			
+
 			c1.Item1 = new TreeNode();
 			c1.Item2 = new TreeNode();
 			c1.Item1.Item1 = c1;

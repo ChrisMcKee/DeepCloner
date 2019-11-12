@@ -1,15 +1,33 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <VersionPrefix>0.10.2</VersionPrefix>
-    <TargetFrameworks>netstandard1.3;net40</TargetFrameworks>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <AssemblyName>DeepCloner</AssemblyName>
-    <!--DelaySign>true</DelaySign>
-    <AssemblyOriginatorKeyFile>../public.snk</AssemblyOriginatorKeyFile>
-    <SignAssembly>true</SignAssembly>
-    <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign-->
+    <VersionPrefix>0.10.4</VersionPrefix>
+    <TargetFrameworks>netstandard2.0;netstandard2.1;net48</TargetFrameworks>
+    <OutputTypeEx>Library</OutputTypeEx>
     <PackageId>DeepCloner</PackageId>
+    <Title>DeepCloner</Title>
+    <Authors>Force</Authors>
+    <Summary>Small fast library for fast, safe, object cloning</Summary>
+    <PackageDescription>Small Library for fast deep or shallow cloning .NET objects. It allows copying everything and has a lot of performance tricks for fast copying.</PackageDescription>
+    <Description>Small Library for fast deep or shallow cloning .NET objects. It allows copying everything and has a lot of performance tricks for fast copying.</Description>
+    <PackageLicenseUrl>https://github.com/force-net/DeepCloner/blob/develop/LICENSE</PackageLicenseUrl>
+    <RepositoryUrl>https://github.com/force-net/DeepCloner</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageProjectUrl>https://github.com/force-net/DeepCloner</PackageProjectUrl>
+    <PackageIconUrl>http://files.force-net.com/deepcloner-nuget-ico.png</PackageIconUrl>
+    <PackageReleaseNotes>
+      Custom dictionary implementation for faster reference counting (and faster cloning)
+      Excluded DBNull from cloning
+      Rewrote code for more accurate cloning of objects forbidden for cloning (mainly for shallow cloning)
+      Better handling of structs cast to object
+      Increased speed of cloning simple tuples
+    </PackageReleaseNotes>
+    <PackageTags>shallow clone; deep clone; cloning; object clone; object cloning; object duplication; clone</PackageTags>
+    <Copyright>Copyright by Force 2016-2019</Copyright>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <RootNamespace>Force.DeepCloner</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'BuildCore' ">
     <DelaySign>true</DelaySign>
@@ -21,10 +39,13 @@
   <PropertyGroup Condition=" '$(Configuration)' == 'BuildCore' ">
     <DefineConstants>$(DefineConstants);BUILDCORE</DefineConstants>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard1.3' ">
-    <DefineConstants>$(DefineConstants);NETCORE;NETCORE13</DefineConstants>
-  </PropertyGroup>
   <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
     <DefineConstants>$(DefineConstants);NETCORE;NETCORE20</DefineConstants>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.1' ">
+    <DefineConstants>$(DefineConstants);NETCORE;NETCORE21</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
 </Project>

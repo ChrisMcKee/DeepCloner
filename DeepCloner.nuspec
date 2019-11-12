@@ -3,27 +3,30 @@
   <metadata>
     <id>DeepCloner</id>
     <title>DeepCloner</title>
-    <version>0.10.3</version>
+    <version>0.10.4</version>
     <authors>force</authors>
     <owners>force</owners>
     <licenseUrl>https://github.com/force-net/DeepCloner/blob/develop/LICENSE</licenseUrl>
     <projectUrl>https://github.com/force-net/DeepCloner</projectUrl>
     <iconUrl>http://files.force-net.com/deepcloner-nuget-ico.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Small Library for fast deep or shallow cloning .NET objects. It allows to copy everything and has a lot of performance tricks for fast copying.</description>
+    <description>Small Library for fast deep or shallow cloning .NET objects. It allows copying everything and has a lot of performance tricks for fast copying.</description>
     <releaseNotes>
-Custom dictionary implementation for faster reference counting (and faster cloning)
-Excluded DBNull from cloning
-Rewrited code for more correct cloning of objects forbidden for cloning (mainly for Shallow cloning)
-Better handling for stucts casted to object
-Increased speed for cloning simple tuples
+    Custom dictionary implementation for faster reference counting (and faster cloning)
+    Excluded DBNull from cloning
+    Rewrote code for more accurate cloning of objects forbidden for cloning (mainly for shallow cloning)
+    Better handling of structs cast to object
+    Increased speed of cloning simple tuples
     </releaseNotes>
-    <copyright>Copyright by Force 2016-2017</copyright>
+    <copyright>Copyright by Force 2016-2019</copyright>
     <tags>.NET shallow deep clone DeepClone fast</tags>
     <dependencies>
       <group targetFramework="net40">
       </group>
       <group targetFramework=".NETStandard1.3">
+        <dependency id="NETStandard.Library" version="[1.6.1, )" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
         <dependency id="NETStandard.Library" version="[1.6.1, )" />
       </group>
     </dependencies>
